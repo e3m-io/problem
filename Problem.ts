@@ -1,20 +1,29 @@
-export class Problem<Type extends string> {
+export class Problem<
+  Type extends string,
+  Title extends string,
+  Detail extends string | undefined = undefined,
+  Meta extends Record<string, any> | undefined = undefined
+> {
   readonly type: Type;
-  readonly title: string;
-  readonly detail: string | undefined;
+  readonly title: Title;
+  readonly detail: Detail;
+  readonly meta: Meta;
 
   constructor({
     type,
     title,
     detail,
+    meta,
   }: {
     type: Type;
-    title: string;
-    detail?: string;
+    title: Title;
+    detail?: Detail;
+    meta?: Meta;
   }) {
     this.type = type;
     this.title = title;
-    this.detail = detail;
+    this.detail = detail as Detail;
+    this.meta = meta as Meta;
   }
 
   toError() {
@@ -26,6 +35,7 @@ export class Problem<Type extends string> {
       type: this.type,
       title: this.title,
       ...(this.detail && { detail: this.detail }),
+      ...(this.meta && { meta: this.meta }),
     });
   }
 }
