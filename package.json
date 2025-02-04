@@ -1,0 +1,24 @@
+{
+  "name": "@e3m-io/problem",
+  "version": "1.0.0",
+  "author": "e3m-io",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e3m-io/problem.git"
+  },
+  "exports": {
+    ".": "./dist/Problem.js"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "Problem.ts"
+  ],
+  "scripts": {
+    "prepare": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
